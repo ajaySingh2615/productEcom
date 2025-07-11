@@ -1,17 +1,18 @@
 package org.cadt.productsecom.service;
 
+import org.cadt.productsecom.dto.ProductResponseDTO;
 import org.cadt.productsecom.entity.Product;
 
 import java.util.List;
 
 public interface ProductService {
-    Product saveProduct(Product product);
+    ProductResponseDTO saveProduct(Product product);
 
-    List<Product> getAllProducts();
+    List<ProductResponseDTO> getAllProducts();
 
-    Product getProductById(Long id);
+    ProductResponseDTO getProductById(Long id);
 
-    Product updateProduct(Long id, Product product);
+    ProductResponseDTO updateProduct(Long id, Product product);
 
     void deleteProduct(Long id);
 }
