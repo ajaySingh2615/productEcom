@@ -1,5 +1,8 @@
 package org.cadt.productsecom.controller;
 
+import jakarta.validation.Valid;
+import org.cadt.productsecom.dto.ProductRequestDTO;
+import org.cadt.productsecom.dto.ProductResponseDTO;
 import org.cadt.productsecom.entity.Product;
 import org.cadt.productsecom.service.ProductService;
 import org.springframework.web.bind.annotation.*;
@@ -17,23 +20,23 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
-        return productService.saveProduct(product);
+    public ProductResponseDTO createProduct(@Valid @RequestBody ProductRequestDTO productRequestDTO) {
+        return productService.saveProduct(productRequestDTO);
     }
 
     @GetMapping
-    public List<Product> getAllProducts() {
+    public List<ProductResponseDTO> getAllProducts() {
         return productService.getAllProducts();
     }
 
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id) {
+    public ProductResponseDTO getProductById(@PathVariable Long id) {
         return productService.getProductById(id);
     }
 
     @PutMapping("/{id}")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product product) {
-        return productService.updateProduct(id, product);
+    public ProductResponseDTO updateProduct(@PathVariable Long id, @RequestBody ProductRequestDTO productRequestDTO) {
+        return productService.updateProduct(id, productRequestDTO);
     }
 
     @DeleteMapping("/{id}")
